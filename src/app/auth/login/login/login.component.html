@@ -1,21 +1,22 @@
 <form (submit)="onLogin(loginform)" #loginform="ngForm">
-    <input type="text"
+       <input type="text"
            ngModel name="enteredusername"
            placeholder="Username"
            required
            minlength="1"
-           pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
-           #enteredusername="ngModel" /> 
-    <div *ngIf="enteredusername.invalid && (enteredusername.dirty || enteredusername.touched)">invalid</div>
-    <br>
-    <input type="password"
+           pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}"
+           #enteredusername="ngModel" />
+       <div *ngIf="loginform.controls['enteredusername'].invalid && loginform.controls['enteredusername'].dirty">Invalid Username</div>
+       <br>
+       <input type="password"
            ngModel name="enteredpassword"
            placeholder="Password"
            required
-           minlength="1"
-           pattern="^([a-zA-Z0-9@*#]{8,15})"
-           #enteredpassword="ngModel" /> 
-    <div *ngIf="enteredpassword.invalid && (enteredpassword.dirty || enteredpassword.touched)">invalid</div>
-    <br>
-    <button type="submit">{{option}}</button>
-</form>
+           minlength="8"
+           pattern="^[a-zA-Z0-9@*#]{8,15}"
+           #enteredpassword="ngModel" />
+       <div *ngIf="loginform.controls['enteredpassword'].invalid && loginform.controls['enteredpassword'].dirty">Invalid Password</div>
+       <br>
+       <button type="submit">Login</button>
+   </form>
+   

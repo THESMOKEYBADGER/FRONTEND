@@ -1,15 +1,22 @@
-<main>
-<div>
-<h1>The Fruit List</h1>
-
-<nav>
-  <a outerLink="/">List</a>
-  <a outerLink="/add">Add</a>
-  <a outerLink="/login">-Login</a>
-  <a outerLink="/signup">-Signup</a>
-</nav>
-<br>
-
-<router-outlet></router-outlet>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fruit List</title>
+</head>
+<body>
+  <main>
+    <div>
+        <h1>The Fruit List</h1>
+        <nav>
+            <a routerLink="/list">List</a>
+            <a routerLink="/add">Add</a>
+            <a routerLink="/login">Login</a>
+            <a routerLink="/signup">Signup</a>
+        </nav>
+    </div>
+    <router-outlet></router-outlet>
 </main>
+</body>
+</html>

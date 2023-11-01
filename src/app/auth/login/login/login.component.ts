@@ -3,7 +3,6 @@ import { AuthServiceService } from '../../auth-service.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,10 +12,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public authservice: AuthServiceService, private router: Router) { }
 
-  option: string = this.router.url
-
   ngOnInit(): void {
-
   }
 
   onLogin(loginform: NgForm) {
@@ -24,11 +20,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-
-    if (this.option == '/login') {
-      this.authservice.login(loginform.value.enteredusername, loginform.value.enteredpassword)
+    if (this.router.url === '/login') {
+      this.authservice.login(loginform.value.enteredusername, loginform.value.enteredpassword);
     } else {
-      this.authservice.signup(loginform.value.enteredusername, loginform.value.enteredpassword)
+      this.authservice.signup(loginform.value.enteredusername, loginform.value.enteredpassword);
     }
   }
 }
