@@ -12,14 +12,14 @@ export class AuthServiceService {
 
   signup (userusername:string, userpassword: string)
   {
-    this.http.post('https://localhost/api/user/signup', {username:userusername, passsword:userpassword})
+    this.http.post('https://localhost:3000/api/user/signup', {username:userusername, passsword:userpassword})
     .subscribe(response =>{
     });
   }
 
-  login (userusername:string, userpassword: string)
+  login (username:string, password: string)
   {
-    this.http.post<{token: string}>('https://localhost/api/user/login', {username:userusername, password:userpassword})
+    this.http.post<{token: string}>('https://localhost:3000/api/user/login', {username:username, password:password})
     .subscribe(response =>{
       const token = response.token;;
       this.token = token;
