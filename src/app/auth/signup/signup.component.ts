@@ -1,14 +1,54 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
-  // Define the onSignup function
-  onSignup(signupForm: any) {
-    // You can handle the signup logic here
-    // For example, you can access form values via signupForm and submit them to a server
+  signupForm: FormGroup;
+
+  constructor() {
+    this.signupForm = new FormGroup({
+      newUsername: new FormControl('', [Validators.required, Validators.minLength(1)]),
+      newPassword: new FormControl('', [Validators.required, Validators.minLength(1), Validators.pattern('^([a-zA-Z0-9@*#]{8,15})$')]),
+    });
+  }
+
+  async onSignup() {
+    console.log("Function called");
+    console.log("Form valid:", this.signupForm.valid);
+
+    if (this.signupForm.valid) {
+      // Get the values of the newUsername and newPassword input fields
+      const newUsername = this.signupForm.value.newUsername;
+      const newPassword = this.signupForm.value.newPassword;
+
+      console.log("New Username:", newUsername);
+      console.log("New Password:", newPassword);
+
+      // Send the request to the server
+      const response = await fetch('https://localhost:3000/api/user/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username:newUsername,
+          password:newPassword,
+        }),
+      });
+
+      // Handle the response
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+      } else {
+        // The request was successful
+      }
+    } else {
+      // Display an error message to the user
+    }
   }
 }

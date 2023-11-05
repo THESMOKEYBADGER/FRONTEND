@@ -1,6 +1,8 @@
-<div *ngFor="let fruit of fruits">
-{{fruit.id}}
-{{fruit.name}}
-<button (click)="ondelete(fruit._id)">Delete</button>
-
-</div>
+<div class="fruit-list">
+    <div class="fruit-item" *ngFor="let fruit of fruits">
+      <span class="fruit-id">{{fruit.id}}</span>
+      <span class="fruit-name">{{fruit.name}}</span>
+      <button class="delete-button" (click)="ondelete(fruit._id)">Delete</button>
+    </div>
+  </div>
+  

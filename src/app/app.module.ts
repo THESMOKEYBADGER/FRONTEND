@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { LoginComponent } from './auth/login/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SignupComponent } from './auth/signup/signup.component';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 
 
 
@@ -25,7 +26,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
