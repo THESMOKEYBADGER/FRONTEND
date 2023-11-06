@@ -10,7 +10,7 @@ import { LoginComponent } from './auth/login/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
-
+import { AuthServiceService } from './auth/auth-service.service';
 
 
 
@@ -29,7 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsMod
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [AuthServiceService,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

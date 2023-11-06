@@ -1,18 +1,18 @@
-<form (submit)="onaddfruit(addFruit)" #addFruit="ngForm">
+<form (submit)="onaddfruit()" [formGroup]="addfruitForm">
     <input type="text" 
-    ngModel name="enteredID" 
+    formControlName="enteredId"
     placeholder="Fruit ID" 
     required 
     minlength="1"
     pattern="^[a-zA-Z0-9\s_-]+$"
-    #enteredID="ngModel"/>
+    />
     <input type="text"
-    ngModel name="enteredName"
+    formControlName="enteredName"
     placeholder="Fruit Name"
     required 
     minlength="1"
     pattern="^[a-zA-Z0-9\s_-]+$"
-    #enteredID="ngModel"/>
+    />
 
 <button type = "submit" >Add Fruit</button>    
 </form>

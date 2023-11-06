@@ -13,7 +13,7 @@ export class FruitServiceService {
   constructor(private http: HttpClient) { }
 
   addfruit_service(pid: string, pname: string) {
-    this.http.post<{ message: string, fruit: any }>('https://localhost:3000/api/fruits', { id: pid, name: pname })
+    this.http.post<{ message: string, fruit: any }>('https://localhost:3000/api/uploads', { id: pid, name: pname })
       .subscribe((thefruit) => {
         this.fruitsdisplay.push(thefruit.fruit);
         this.updatefruitsdisplay.next([...this.fruitsdisplay]);
@@ -21,7 +21,7 @@ export class FruitServiceService {
   }
 
   getfruit_service() {
-    this.http.get<{ message: String, fruits: any }>('https://localhost:3000/api/fruits')
+    this.http.get<{ message: String, fruits: any }>('https://localhost:3000/api/uploads')
       .subscribe((thefruit) => {
         this.fruitsdisplay = thefruit.fruits
         this.updatefruitsdisplay.next([...this.fruitsdisplay]);
