@@ -1,44 +1,43 @@
 /* Style for the fruit list container */
-.fruit-list {
-    max-width: 400px; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the list horizontally */
-  }
-  
-  /* Style for each fruit item */
-  .fruit-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Style for the fruit ID */
-  .fruit-id {
-    font-weight: bold;
-  }
-  
-  /* Style for the fruit name */
-  .fruit-name {
-    flex-grow: 1;
-    margin: 0 10px;
-  }
-  
-  /* Style for the delete button */
-  .delete-button {
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  /* Hover effect for the delete button */
-  .delete-button:hover {
-    background-color: #ff3333;
-  }
-  
+.fruit-list-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Style for each fruit item */
+.fruit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Style for the fruit ID */
+.fruit-id {
+  font-weight: bold;
+}
+
+/* Style for the fruit name */
+.fruit-name {
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+/* Style for the delete button */
+.delete-button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Hover effect for the delete button */
+.delete-button:hover {
+  background-color: #ff3333;
+}

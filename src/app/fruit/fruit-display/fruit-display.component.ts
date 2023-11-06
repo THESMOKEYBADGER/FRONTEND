@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FruitServiceService } from '../fruit-service.service';
+import { ViewEncapsulation } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-fruit-display',
   templateUrl: './fruit-display.component.html',
-  styleUrls: ['./fruit-display.component.css']
-})
-export class FruitDisplayComponent implements OnInit{
+  styleUrls: ['./fruit-display.component.css'],
+  encapsulation: ViewEncapsulation.None,
 
-  fruits:{_id:string,id:string,name:string,__v:string}[] = [];
+})
+export class FruitDisplayComponent implements OnInit {
+
+  fruits:{_id:string,id:string,name:string, __v:string}[] = [];
+
 
   constructor(public fruitservice: FruitServiceService) { }
   private fruitsubscription!: Subscription;
-
-  ngOnInit() {
+  ngOnInit(){
     this.fruitservice.getfruit_service();
     this.fruitsubscription = this.fruitservice.getUpdateListener()
-    .subscribe((fruits:{_id:string,id:string,name:string,__v:string}[])=>
+    .subscribe((fruits:{_id:string,id:string,name:string, __v:string}[])=>
     {
       this.fruits = fruits;
     });
-    
   }
 
   ngOnDestroy()
@@ -29,8 +33,7 @@ export class FruitDisplayComponent implements OnInit{
     this.fruitsubscription.unsubscribe();
   }
 
-  ondelete(fruitid:string) {
+  ondelete(fruitid: string){
     this.fruitservice.deletefruit_service(fruitid)
   }
-
 }
