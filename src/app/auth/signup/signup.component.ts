@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
-import { ErrorComponent } from '../../error/error/error.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorComponent } from 'src/app/error/error/error.component';
+import { SuccessComponent } from 'src/app/success/success/success.component';
 
 
 @Component({
@@ -28,14 +29,12 @@ export class SignupComponent {
     console.log('Form valid:', this.signupForm.valid);
 
     if (this.signupForm.valid) {
-      // Get the values of the newUsername and newPassword input fields
       const newUsername = this.signupForm.value.newUsername;
       const newPassword = this.signupForm.value.newPassword;
 
       console.log('New Username:', newUsername);
       console.log('New Password:', newPassword);
 
-      // Send the request to the server
       try {
         const response = await fetch('https://localhost:3000/api/user/signup', {
           method: 'POST',
@@ -48,16 +47,16 @@ export class SignupComponent {
           }),
         });
 
-        // Handle the response
         if (!response.ok) {
           const error = await response.json();
-          this.openErrorDialog(error.message); // Open the error dialog with the error message
+          this.openErrorDialog(error.message);
         } else {
-          // The request was successful
+          const success = await response.json(); // Parse the success message from the response
+          this.openSuccessDialog(success.message); // Open the success dialog with the success message
         }
       } catch (error) {
         console.error('Error during signup:', error);
-        this.openErrorDialog('An error occurred during signup.'); // Open the error dialog with a generic error message
+        this.openErrorDialog('An error occurred during signup.');
       }
     } else {
       // Display an error message to the user
@@ -66,5 +65,9 @@ export class SignupComponent {
 
   private openErrorDialog(errorMessage: string) {
     this.dialog.open(ErrorComponent, { data: { message: errorMessage } });
+  }
+
+  private openSuccessDialog(successMessage: string) {
+    this.dialog.open(SuccessComponent, { data: { message: successMessage } });
   }
 }
