@@ -9,7 +9,7 @@ import {
 
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { SuccessComponent } from './success/success.component'; // Import SuccessComponent
+import { SuccessComponent } from './success/success.component';
 import { tap } from 'rxjs/operators';
 
 @Injectable()
@@ -19,9 +19,13 @@ export class SuccessInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
-      tap((event) => {
-        if (event instanceof HttpResponse && event.status === 200) { // Check for successful status code (e.g., 200)
-          this.dialog.open(SuccessComponent, { data: { message: 'Success message' } });
+      tap((event: HttpEvent<unknown>) => {
+        if (event instanceof HttpResponse && (event.status === 200 || event.status === 201)) {
+          let successMessage = 'Success message';
+          if ((event as HttpResponse<any>).body && (event as HttpResponse<any>).body.message) {
+            successMessage = (event as HttpResponse<any>).body.message;
+          }
+          this.dialog.open(SuccessComponent, { data: { message: successMessage } });
         }
       })
     );

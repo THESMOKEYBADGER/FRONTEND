@@ -9,31 +9,11 @@
     padding: 2px; /* Set a standard padding */
     z-index: 100;
     text-align: center;
-    width: 300px; /* Set a standard width */
+    width: 200px; /* Set a standard width */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     font-family: Arial, sans-serif;
     font-size: 15px; /* Set a standard font size */
   }
   
-  #success-message .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #ffffff; /* White text color */
-    background-color: #007BFF; /* A modern blue background color */
-    border: none;
-    border-radius: 50%; /* Rounded shape */
-    width: 20px; /* Set a smaller width */
-    height: 20px; /* Set a smaller height */
-    line-height: 20px; /* Center the "X" text vertically */
-    text-align: center; /* Center the "X" text horizontally */
-    font-size: 14px; /* Set a font size for better visibility */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Add a smooth color transition on hover */
-  }
   
-  
-  #success-message .close-button:hover {
-    background-color: #0056b3; /* Slightly darker blue on hover */
-  }
   
