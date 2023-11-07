@@ -1,5 +1,7 @@
-<div *ngFor="let fruit of fruits" class="fruit-item">
-  <span class="fruit-id">{{fruit.id}}</span>
-  <span class="fruit-name">{{fruit.name}}</span>
-  <button class="delete-button" (click)="ondelete(fruit._id)">Delete</button>
+<div class="fruit-list-container"> <!-- New container for the list -->
+  <div *ngFor="let fruit of fruits" class="fruit-item">
+    <span class="fruit-id">{{fruit.id}}</span>
+    <span class="fruit-name">{{fruit.name}}</span>
+    <button class="delete-button" (click)="ondelete(fruit._id)">Delete</button>
+  </div>
 </div>

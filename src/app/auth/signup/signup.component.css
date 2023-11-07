@@ -11,6 +11,7 @@ input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+ 
 }
 
 button {
@@ -22,3 +23,9 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.error-message {
+    font-size: 12px; /* Adjust the font size as needed */
+    color: red; /* You can also adjust the color as needed */
+  }
+  

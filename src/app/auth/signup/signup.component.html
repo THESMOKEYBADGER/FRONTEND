@@ -1,21 +1,21 @@
 <form (ngSubmit)="onSignup()" [formGroup]="signupForm">
     <input type="text" f
     formControlName="newUsername" 
-    placeholder="New Username" 
+    placeholder="Username" 
     required 
     minlength="1" />
-    <div *ngIf="signupForm.get('newUsername')?.hasError('required')">Username is required</div>
-    <div *ngIf="signupForm.get('newUsername')?.hasError('minlength')">Username must have at least 1 character</div>
+    <div class="error-message" *ngIf="signupForm.get('newUsername')?.hasError('required')">Username is required</div>
+    <div class="error-message" *ngIf="signupForm.get('newUsername')?.hasError('minlength')">Username must have at least 1 character</div>
     <br>
     <input type="password" 
     formControlName="newPassword" 
-    placeholder="New Password" 
+    placeholder="Password" 
     required 
     minlength="1" 
     pattern="^([a-zA-Z0-9@*#]{8,15})" />
-    <div *ngIf="signupForm.get('newPassword')?.hasError('required')">Password is required</div>
-    <div *ngIf="signupForm.get('newPassword')?.hasError('minlength')">Password must have at least 1 character</div>
-    <div *ngIf="signupForm.get('newPassword')?.hasError('pattern')">Password format is invalid</div>
+    <div class="error-message" *ngIf="signupForm.get('newPassword')?.hasError('required')">Password is required</div>
+    <div class="error-message" *ngIf="signupForm.get('newPassword')?.hasError('minlength')">Password must have at least 1 character</div>
+    <div class="error-message" *ngIf="signupForm.get('newPassword')?.hasError('pattern')">Password format is invalid</div>
     <br>
     <button type="submit">Signup</button>
   </form>
